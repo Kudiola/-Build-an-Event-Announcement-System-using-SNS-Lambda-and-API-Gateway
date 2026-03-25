@@ -8,9 +8,10 @@ subscribe to event notifications, view upcoming events, and create new events.
 ## Live Demo
 S3 Static Website URL:http://event-announcement-website-797793345031-us-east-1-an.s3-website-us-east-1.amazonaws.com
 
-img width="620" height="534" alt="image" src="https://github.com/user-attachments/assets/2001253f-523c-4692-bdaf-7ed10f0acc68"
 
----
+
+---![Page](https://github.com/user-attachments/assets/1347836c-8a79-4053-9ebc-594f330ca4d9)
+
 
 ## Architecture
 ![Architecture Diagram](architecture/diagram.png)

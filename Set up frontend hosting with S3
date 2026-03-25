@@ -1,1 +1,108 @@
+# Overview
+This step involves setting up the frontend of the Event Announcement System 
+and hosting it as a static website using AWS S3. The frontend consists of 
+three files that handle the structure, styling, and event data of the website.
+
+---
+
+## Frontend Files
+The frontend is made up of three files:
+
+**index.html** — The main structure of the website. It includes:
+- A header with a "Subscribe to Events" button
+- An events section that loads and displays events from `events.json`
+- A "Create New Event" form for submitting new events
+- JavaScript functions that handle communication with the backend API:
+  - `loadEvents()` — Fetches and displays events from `events.json`
+  - `subscribeToEvents()` — Sends a user's email to the backend for SNS subscription
+  - `submitNewEvent()` — Sends new event details to the backend API
+
+**styles.css** — Handles the visual appearance and layout of the website.
+
+**events.json** — Stores the event data. Each event contains a title, date, 
+and description. Example structure:
+```json
+[
+  {
+    "title": "AWS Workshop",
+    "date": "2024-11-20",
+    "description": "Join us for a hands-on AWS workshop covering S3, CloudFront, and SNS!"
+  }
+]
+```
+
+---
+
+## Steps Taken
+
+### 1. Created an S3 Bucket
+- Navigated to the S3 service in my AWS Management Console
+- Clicked "Create bucket" and configured the following:
+  - **Bucket Name:** `event-announcement-website` (unique name)
+  - **Region:** Selected the region where all backend services will be hosted
+  - **Block Public Access:** Disabled "Block all public access" to allow 
+    static website hosting
+- Clicked "Create bucket"
+
+### 2. Uploaded Website Files
+- Opened the S3 bucket
+- Clicked "Upload" and selected the three frontend files:
+  - `index.html`
+  - `styles.css`
+  - `events.json`
+- Confirmed all three files were visible at the root level of the bucket
+
+### 3. Enabled Static Website Hosting
+- Navigated to the **Properties** tab of the S3 bucket
+- Scrolled to **Static website hosting** and enabled it
+- Selected "Host a static website"
+- Set `index.html` as the **Index Document**
+- Left the Error Document blank
+- Saved the configuration
+
+### 4. Configured Bucket Policy for Public Access
+- Navigated to the **Permissions** tab
+- Clicked **Edit** under Bucket Policy
+- Added the following policy to allow public read access:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::/bucketurl*"
+    }
+  ]
+}
+```
+
+### 5. Verified the Website
+- Copied the **Bucket Website Endpoint** from the Static website hosting settings
+- Opened the URL in a browser and confirmed the website loaded successfully
+
+---
+
+## Outcome
+The website is live and accessible via the S3 static website endpoint. 
+It displays event listings loaded from `events.json` and includes a 
+"Subscribe to Events" button and a "Create New Event" form.
+
+---
+
+## Issues Encountered & Fixes
+
+**Issue:** Website returned a `404 NoSuchKey` error for `index.html`  
+**Cause:** The file was saved locally as `index(1).html` due to a duplicate 
+filename on the local machine. S3 static hosting looks for `index.html` 
+at the root level and could not find it.  
+**Fix:** Renamed the file to `index.html` and re-uploaded it to the S3 bucket.
+
+---
+## Screenshots
+
+
+
+
 

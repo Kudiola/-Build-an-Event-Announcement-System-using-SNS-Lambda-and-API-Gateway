@@ -14,7 +14,8 @@ S3 Static Website URL:http://event-announcement-website-797793345031-us-east-1-a
 
 
 ## Architecture
-![Architecture Diagram](architecture/diagram.png)
+![Architectural Diagram ](https://github.com/user-attachments/assets/be56942c-4bf5-435a-9f58-0b7f74bcefd0)
+
 
 The system is built entirely on AWS serverless services:
 - User visits the static website hosted on **S3**

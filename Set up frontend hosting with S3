@@ -72,7 +72,7 @@ and description. Example structure:
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::/bucketurl*"
+      "Resource": "arn:aws:s3:::event-announcement-website-797793345031-us-east-1-an/*"
     }
   ]
 }
@@ -101,6 +101,13 @@ at the root level and could not find it.
 
 ---
 ## Screenshots
+
+
+
+
+
+
+
 
 
 
